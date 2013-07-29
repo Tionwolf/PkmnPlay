@@ -1,0 +1,71 @@
+package PokeGame;
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author tyler.nations
+ */
+// (backpack,item,quanity)
+// array of item quanities  
+// assign id number to each item ex. 1 = Pokeball, 2 = Potion
+public class Backpack  //extends Trainer
+{
+
+    int[][]  items; // first row is itemID second is Quanity
+    String[] itemNames = {"Pokeball","Potion"};
+
+    
+    
+    // for loop / if check for 0 quanity else print item name and quanity
+    public void addItemQuanity(int itemID,int quanityAdded)
+    {
+          items[itemID][0] += quanityAdded;
+     
+    }
+    
+    public void loseItemQuanity(int itemID,int quanityLost)
+    {
+        items[itemID][0]  += quanityLost;
+    }
+    
+    
+    
+    public void test()
+    {
+        initlizer();
+        System.out.println(items[0][0]);
+        
+        
+        //for (int idCount = 0; idCount < 1; idCount++) // need to initlize all of items[][];
+        //{
+        //    for (int quanityCheck = 0;quanityCheck < 1 ;quanityCheck++)
+         //   {
+         //       if (items[idCount][quanityCheck] != 0)
+         //       {
+         //           System.out.println(itemNames[idCount]+" "+ items[idCount][quanityCheck]);
+         //       }
+         //   }
+       // }
+    
+    }
+    
+    public void initlizer()
+    {
+        for (int counter = 0; counter < 5; counter++)
+        {
+            for (int counter2 = 0; counter2 <2; counter2++)
+            {
+//                items[counter][counter2]= 0;
+            }
+        }
+    }
+
+}
+
+
+
+
