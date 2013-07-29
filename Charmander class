@@ -1,0 +1,20 @@
+public class Charmander extends Pokemon{
+    
+    Charmander()
+    {
+        Pokemon.name = "Charmander";
+        Pokemon.id = 7;
+        Pokemon.hp = 20;
+        Pokemon.atk = 5;
+        Pokemon.def = 3;
+        Pokemon.spd = 4;
+        Pokemon.spl = 5;
+        Pokemon.acc = 4;
+        Pokemon.spcdef = 3;
+        Pokemon.type = 1;
+    }
+    
+    public void CharmanderAbilities(){
+        //Abilities.Ember();
+    }
+}
