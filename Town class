@@ -1,0 +1,284 @@
+import java.util.Scanner;
+import java.util.Random;
+
+public class Town {
+
+    public static Random rand = new Random();
+    public static Scanner scan = new Scanner(System.in);
+    private static int num, amount, stash, x = 0, choice = 0;
+    public static Pokemon Enemy = new Pokemon();
+    public static Pokemon currentPokemon = new Pokemon();//Trainer.pokemonRoster()
+    static String[] s = {"Pallet Town", "Pewter City", "Cerulean City"};
+    static int[] Encounter = new int[]{};
+
+    public static void wildEncounter(Pokemon Enemy) {
+        System.out.println("You have encountered a wild " + Enemy.name + "!");
+        System.out.println("The wild "+ Enemy.name + " has " + Enemy.hp + " life.");
+        System.out.println(Trainer.getName()+": "+currentPokemon.name+", I choose you!");
+        System.out.println(currentPokemon.name+ " has " + currentPokemon.hp+" health remaining.");
+        
+        while (Enemy.hp != 0) {
+            System.out.println(
+                    "What would you like to do?\n"
+                    + "1: Attack\n"
+                    + "2: Items\n"
+                    + "3: Switch Pkmn\n"
+                    + "4:Run Away\n"
+                    + "Your Selection: ");
+            choice = scan.nextInt();
+            switch (choice) {
+                case 1:
+                    Attack(Enemy, currentPokemon);
+                    break;
+                case 2:
+                    Backpack.checkBackpack();
+                    break;
+                case 3:
+                    //Trainer.pokemonRoster();
+                    break;
+                case 4:
+                    int chance = rand.nextInt(100);
+                    if (chance < 80) {
+                        Town.Town();
+                    } else {
+                        break;
+                    }
+            }
+        }
+        System.out.println("You have defeated the wild "+Enemy.name);
+    }
+
+    public static void whichEncounter(int x) {
+        switch (x) {
+            case 0:
+                EncounterPallet();
+                break;
+            case 1:
+                EncounterPewter();
+                break;
+            case 2:
+                EncounterCerulean();
+                break;
+        }
+    }
+
+    public static void EncounterPallet() {
+        amount = rand.nextInt(3);
+        for (int i = 0; i < amount; i++) {
+            num = rand.nextInt(2);
+            switch (num) {
+                case 1:
+                    Enemy = new Ratata();
+                    wildEncounter(Enemy);
+                    break;
+                default:
+                    Enemy = new Pidgy();
+                    wildEncounter(Enemy);
+                    break;
+            }
+        }
+    }
+
+    public static void EncounterPewter() {
+        amount = rand.nextInt(3);
+        for (int i = 0; i < amount; i++) {
+            num = rand.nextInt(2);
+            switch (num) {
+                case 1:
+                    Enemy = new Ratata();
+                    wildEncounter(Enemy);
+                    break;
+                default:
+                    Enemy = new Pidgy();
+                    wildEncounter(Enemy);
+                    break;
+            }
+        }
+    }
+
+    public static void EncounterCerulean() {
+        amount = rand.nextInt(3);
+        for (int i = 0; i < amount; i++) {
+            num = rand.nextInt(2);
+            switch (num) {
+                case 1:
+                    Enemy = new Ratata();
+                    wildEncounter(Enemy);
+                    break;
+                default:
+                    Enemy = new Pidgy();
+                    wildEncounter(Enemy);
+                    break;
+            }
+        }
+    }
+
+    public static void Attack(Object Enemy, Object currentPokemon) {
+        
+        
+    }
+
+    public static void Town() {
+        if (x == 0) {
+            int temp = 0;
+            System.out.println(Trainer.getName() + " walks into " + s[x] + " where do you want to go?(TYPE A NUMBER IN THE SELECTION)");
+            System.out.println("1. Advance to " + s[x + 1]);
+            System.out.println("2. Visit Professor Alger!");
+            System.out.println("3. Visit YOUR MOTHER!");
+            System.out.print("Your Selection:");
+            Scanner where = new Scanner(System.in);
+            temp = where.nextInt();
+            switch (temp) {
+                case 1:
+                    nextTown();
+                    break;
+                case 2:
+                    professorAlger();
+                    break;
+                case 3:
+                    mommy();
+                    break;
+            }
+        } else {
+            int temp = 0;
+            System.out.println(Trainer.getName() + " walks into " + s[x] + " where do you want to go?(TYPE A NUMBER IN THE SELECTION)");
+            System.out.println("1. Advance to " + s[x + 1]);
+            System.out.println("2. Advance to " + s[x - 1]);
+            System.out.println("3. Visit to PokeCenter");
+            System.out.println("4. Visit to PokeMart");
+            System.out.println("5. Beseige the Gym");
+            System.out.println("Press 0 to access the Trainer Menu.");
+            System.out.print("Your Selection:");
+            Scanner where = new Scanner(System.in);
+            temp = where.nextInt();
+            switch (temp) {
+                case 1:
+                    nextTown();
+                    break;
+                case 2:
+                    lastTown();
+                    break;
+                case 3:
+                    pokeCenter();
+                    break;
+                case 4:
+                    pokeMart();
+                    break;
+                case 5:
+                    System.out.println("TBI");
+                    //gym();
+                    break;
+                default:
+                    Trainer.TrainerMenu();
+                }
+        }
+    }
+
+    public static void nextTown() {
+        x++;
+        whichEncounter(x);
+        Town();
+    }
+
+    public static void lastTown() {
+        x--;
+        whichEncounter(x);
+        Town();
+    }
+
+    public static void pokeCenter() {
+        System.out.println("Welcome to the PokeCenter!");
+        System.out.println("1. Heal Pokemon.");
+        System.out.println("2. Visit PC.");
+        System.out.println("3. Leave");
+        System.out.print("Your Selection:");
+        Scanner input = new Scanner(System.in);
+        choice = input.nextInt();
+        switch (choice) {
+            case 1: 
+                //Pokemon-Roster HP=MaxHP;
+                System.out.println("TBI");
+                break;
+            case 2:
+                //PC.pcMenu();
+                System.out.println("TBI");
+                break;
+            case 3:
+                Town.Town();
+        }
+    }
+
+    public static void pokeMart() {
+        System.out.println("Welcome to the Pokemart!");
+        System.out.println("1. Buy");
+        System.out.println("2. Sell");
+        System.out.println("3. Leave");
+        System.out.print("Your Selection:");
+        Scanner input = new Scanner(System.in);
+        choice = input.nextInt();
+        switch (choice) {
+            case 1: 
+                //Buy();
+                System.out.println("TBI");
+                break;
+            case 2: 
+                //Sell();
+                System.out.println("TBI");
+                break;
+            case 3:
+                Town.Town();
+        }
+    }
+
+    public static void professorAlger() {
+        System.out.println("Well, hello " + Trainer.getName() + ".\nHow is the pokemon I gave you?\nThat's nice now GTFO.");
+        Town.Town();
+    }
+
+    public static void mommy() {
+        int temp = 0;
+        System.out.println("Mom: "+ Trainer.getName() + ", Get me a beer!");
+        System.out.println(Trainer.getName() + ": No, mom I have begun my conquest to be the best Pokemon"
+                + " Slaver in the World!");
+        System.out.println("Mom: Ask your Dad first");
+        System.out.println(Trainer.getName() + ": but he is passed out!");
+        System.out.println("Mom:...");
+        System.out.println(Trainer.getName() + ":(f*** it im just gonna hide it under my pillow)");
+        System.out.println("You currently have "+Trainer.getMoney()+" PokeYen under your pillow!!");
+        System.out.println("1. Deposit Money  2. Withdraw Money");
+        Scanner which = new Scanner(System.in);
+        temp = which.nextInt();
+        stash = Trainer.getMoney();
+        switch (temp) {
+            case 1:
+                System.out.print("How much will you Deposit?    :");
+                Scanner Deposit = new Scanner(System.in);
+                temp = Deposit.nextInt();
+                if (Trainer.getMoney() < temp)
+                    System.out.print("I do not accept blood donations to myself.");
+                else 
+                    stash += temp;
+                Trainer.setMoney(stash);
+                System.out.println("You now have " + stash + " saved up!");
+                break;
+
+            case 2:
+                System.out.print("How much will you take?       :");
+                Scanner Withdraw = new Scanner(System.in);
+                temp = Withdraw.nextInt();
+                if (stash < temp) 
+                    System.out.println("You wish...");
+                else
+                    stash-=temp;
+                Trainer.setMoney(stash);
+                System.out.println("You now have " + stash + " left");
+                break;
+            default:
+                System.out.println("Your Mother raided your stash to buy more beer.");
+                stash = 0;
+                System.out.println("You now have " + stash + " left");
+                break;
+        }
+        Town.Town();
+    }
+}
