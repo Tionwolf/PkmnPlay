@@ -1,0 +1,73 @@
+import java.util.Scanner;
+
+public class Backpack {
+
+    static int pokeballs, potions, antidotes, choice;
+    static Scanner input = new Scanner(System.in);
+
+    public static void checkBackpack() {
+        // getPokeballs()  from ??
+        // getPotions()    from ??
+        // getAntidotes()  from ??
+        System.out.println("Pokeballs:   " + pokeballs);   // Need to implement correct formating
+        System.out.println("Potions:     " + potions);
+        System.out.println("Antidotes:   " + antidotes);
+        System.out.printf("Would you like to use an item?\n input 1 for"
+                + " yes anything else for no\n");
+        choice = input.nextInt();
+        if (choice == 1) {
+            useItem();
+        }
+    }
+
+    public static void useItem(){
+        System.out.printf("Which item would you like to use?\n"
+                    + "1 for Pokeball\n"
+                    + "2 for Potions\n"
+                    + "3 for Antidotes\n");
+            choice = input.nextInt();
+            switch (choice) {
+                case 1:
+                    System.out.println("You throw a pokeball. TBI");
+                    //pokeball(); // Implement this item methods
+                    //pokeball.setPokeballs(pokeballs - 1);  // This is not the right syntax
+                    break;
+                case 2:
+                    System.out.println("You used a potion. TBI");
+                    //potion();
+                    //potion.setPotions(potions - 1);  // This is not the right syntax
+                    break;
+                case 3:
+                    System.out.println("You used an antidote. TBI");
+                    //antidote();
+                    //antidote.setAntidotes(antidote - 1);  // This is not the right syntax
+                    break;
+                default:
+                    break;
+            }
+    }
+    
+    public static int getPokeballs() {
+        return pokeballs;
+    }
+
+    public static void setPokeballs(int s) {
+        pokeballs = s;
+    }
+
+    public static int getPotions() {
+        return potions;
+    }
+
+    public static void setPotions(int s) {
+        potions = s;
+    }
+
+    public static int getAntidotes() {
+        return antidotes;
+    }
+
+    public static void setAntidotes(int s) {
+        antidotes = s;
+    }
+}
