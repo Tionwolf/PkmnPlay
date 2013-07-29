@@ -1,0 +1,238 @@
+//Main Class
+
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.*;
+import javax.imageio.ImageIO;
+
+public class Pokemon {
+
+    public static Scanner scan = new Scanner(System.in);
+    public static String name, ele;
+    public static int damage, status, hp, type, atk, def, spd, spl, acc, spcdef, id, start;
+    public static boolean isWild, isCon = true;
+    private static Pokemon newPokemon = new Pokemon();
+
+//    public static void statusEffect() {
+//        switch (status) {
+//            case 1:
+//                System.out.print(Train.pokemonTeam[slot] + " is Paralyzed!");
+//                //% to skip turn;
+//            case 2:
+//                System.out.println(Train.pokemonTeam[slot] + " is Poisoned!");
+//                //take dmg beginning of every trainer turn
+//            case 3: 
+//                System.out.println(Train.pokemonTeam[slot] + " is Burned!");
+//                //take dmg after every turn
+//        }
+//    }
+    public static void Pokemon(int identity, int health, int Type, int attack,
+            int defense, int speed, int special, int accuracy, int specialDef,
+            boolean wild, String Name) {
+
+        isWild = wild;
+        id = identity;
+        name = Name;
+        hp = health;
+        atk = attack;
+        def = defense;
+        spd = speed;
+        spl = special;
+        acc = accuracy;
+        spcdef = specialDef;
+        type = Type;
+    }
+
+    public static void ElementType(int type) {
+        String myType;
+        switch (type) {
+            case 1:
+                myType = "Fire";
+            case 2:
+                myType = "Water";
+            case 3:
+                myType = "Grass";
+            case 4:
+                myType = "Electric";
+            case 5:
+                myType = "Rock";
+            case 6:
+                myType = "Bug";
+            case 7:
+                myType = "Psychic";
+            case 8:
+                myType = "Ghost";
+            case 9:
+                myType = "Ground";
+            case 10:
+                myType = "Flying";
+            case 11:
+                myType = "Dark";
+            case 12:
+                myType = "Dragon";
+            case 13:
+                myType = "Poison";
+            case 14:
+                myType = "Fighting";
+            case 15:
+                myType = "Ice";
+            case 16:
+                myType = "Steel";
+            default:
+                myType = "Normal";
+        }
+        ele = myType;
+    }
+
+    public void ElementVersus(String myType) {
+        //Fire > Grass > Water > Fire
+    }
+
+    public static int Health(int health, int dmg, int heal) {
+        health = health - dmg;
+        health = health + heal;
+        return health;
+    }
+
+    public static void NickName(Object pokemon) {
+        String nickname;
+        System.out.println("What would you like to nickname your new " + newPokemon.name+"?");
+        nickname = scan.next();
+        name = nickname;
+    }
+
+    public static void ElementStyle() {
+        int type;
+        String answer1, answer2, answer3;
+        
+        System.out.println("Do you like playing with fire?");
+        answer1 = scan.next();
+        answer1 = answer1.toLowerCase();
+
+        System.out.println("Do you like to go swimming?");
+        answer2 = scan.next();
+        answer2 = answer2.toLowerCase();
+
+        System.out.println("Do you like to garden?");
+        answer3 = scan.next();
+        answer3 = answer3.toLowerCase();
+
+        if (answer1.equals("yes")) {
+            type = 1;
+        } else if (answer2.equals("yes")) {
+            type = 2;
+        } else if (answer3.equals("yes")) {
+            type = 3;
+        } else {
+            type = 4;
+        }
+
+        Pokemon.ElementType(type);
+    }
+    
+    public static void chooseFirst(){
+        int pick;
+        System.out.println("You sneak into Professor Alger's Lab and go over to"
+                + " the rack of Pokeballs he likes to have on display");
+        System.out.println("Which Pokemon would you like to steal?");
+        System.out.println("1: Charmander\n2: Squirtle\n3: Bulbasaur");
+        pick = scan.nextInt();
+        type = pick;
+    }
+    
+    public static void getFirstPokemon() {
+        switch (type) {
+            case 1:
+                newPokemon = new Charmander();
+                break;
+            case 2:
+                newPokemon = new Squirtle();
+                break;
+            case 3:
+                newPokemon = new Bulbasaur();
+                break;
+            default:
+                newPokemon = new Pidgy();
+                break;
+        }
+        System.out.println("You recieved a " + newPokemon.name + "!");
+        Pokemon.NickName(newPokemon);
+        //Trainer.addPokemon();
+    }
+
+    public static void StartMenu() {
+        //        BufferedImage img = null;
+        //        try {
+        //            img = ImageIO.read(new File("starter01.png"));
+        //        } catch (IOException e) {
+        //        }
+                System.out.println("________   ____  _    __        _     ___    _ \n" +
+        "\\       \\  \\_  |/ \\  /_/   __  / |   /_  \\  | |\n" +
+        " \\_  \\_  \\ __\\    /  ___  |  \\/  | ___ |  \\ | |\n" +
+        "   \\   __//  \\|   \\ / |_\\ |      |/   \\|   \\| |\n" +
+        "    \\  \\ | |_ |    \\\\  --|| |\\/| |  |_ | |\\   |\n" +
+        "     \\__\\ \\__/|_|\\__|\\__/ |_|  |_|\\___/|_| |__|");
+                System.out.println(".__                            __.\n" +
+        "  \\ `\\~~---..---~~~~~~--.---~~| /   \n" +
+        "   `~-.   `                   .~         _____ \n" +
+        "       ~.                .--~~    .---~~~    /\n" +
+        "        / .-.      .-.      |  <~~        __/\n" +
+        "       |  |_|      |_|       \\  \\     .--'\n" +
+        "      /-.      -       .-.    |  \\_   \\_\n" +
+        "      \\-'   -..-..-    `-'    |    \\__  \\_ \n" +
+        "       `.                     |     _/  _/\n" +
+        "         ~-                .,-\\   _/  _/\n" +
+        "        /                 -~~~~\\ /_  /_\n" +
+        "       |               /   |    \\  \\_  \\_ \n" +
+        "       |   /          /   /      | _/  _/\n" +
+        "       |  |          |   /    .,-|/  _/ \n" +
+        "       )__/           \\_/    -~~~| _/\n" +
+        "         \\                      /  \\\n" +
+        "          |           |        /_---` \n" +
+        "          \\    .______|      ./\n" +
+        "          (   /        \\    /           \n" +
+        "          `--'          /__/");
+        System.out.println("Press 1 to Start new game.\n");
+        System.out.println("Press 2 to Load saved game.\n");
+        start = scan.nextInt();
+        if (start == 1) {
+            newGameMenu();
+        } else {
+            loadGameMenu();
+        }
+
+    }
+
+    public static void loadGameMenu() {
+        System.out.println("TBI");
+        Pokemon.StartMenu();
+    }
+
+    public static void newGameMenu() {
+        System.out.println("Welcome to Kanto!");
+        System.out.println("In this world you have just had your tenth birthday"
+                + " and are now getting kicked out of your home.\nYour only "
+                + "chance for survival is to become a Pokemon Trainer.\n"
+                + "Trainers travel the world capturing and training wild Pokemon; "
+                + "creatures imbued with elemental powers.");
+        System.out.println("You get to start in the town of Pallet.");
+        System.out.println("What is your name, Trainer?");
+        Trainer.setName();
+        System.out.println("In this version there are 4 Elements: Fire, Water, Grass and Normal.");
+        Pokemon.chooseFirst();
+        //System.out.println("Let us find out your Element Type...");
+        //Pokemon.ElementStyle();
+        //System.out.println("Congratulations! You are a " + ele + " Type Trainer!\n"
+                //+ "You get a Pokemon of the matching Element from your only friend, Professor Alger!");
+        System.out.println("Now here is your first Pokemon:");
+        Pokemon.getFirstPokemon();
+        System.out.println("Now you and your new slave shall begin your fight "
+                + "for survival in a world filled with danger and greed...\n");
+        Town.Town();
+    }
+
+    public static void main(String[] args) {
+        Pokemon.StartMenu();
+    }
+}
