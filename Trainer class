@@ -1,0 +1,87 @@
+import java.util.Scanner;
+
+public class Trainer {
+
+    private static int badges, money;
+    static String name;
+    static Scanner input = new Scanner(System.in);
+
+    public static void setName() {
+        name = input.next();
+    }
+
+    public static String getName() {
+        return name;
+    }
+
+    public static void trainerStats() // displays name, money, badges, and offers to check pokemon
+    {
+        // Add get money // get badges from ??
+        System.out.println(name + " stats");
+        System.out.println("Money = " + money);
+        System.out.println("Badges earned = " + badges);
+        System.out.println("Would you like to check your pokemon status?");
+        // Add user input for y / n
+
+    }
+
+    public static void pokemonRoster() {
+        /*for(int x = 0;int < 6; x++)
+         {
+         currentPokemon[x];
+         }
+         */  // double check if this would work
+    }
+
+    public static int getMoney() {
+        return money;
+    }
+
+    public static void setMoney(int s) {
+        money = s;
+    }
+
+    public static int getBadges() {
+        return badges;
+    }
+
+    public static void setBadges(int s) {
+        badges = s;
+    }
+    
+    public static void TrainerMenu(){
+        int choice;
+        System.out.println("Welcome, "+Trainer.getName()+", to your menu!");
+        Trainer.trainerStats();
+        System.out.println("From this menu you can access the following options:");
+        System.out.println("1: Check the status of your Team.");
+        System.out.println("2: Check your backpack.");
+        System.out.println("3: Check the Map.");
+        System.out.println("4: Save the Game.");
+        System.out.println("5: Exit the Game.");
+        System.out.println("Press 0 to exit the menu.");
+        choice = input.nextInt();
+        
+        switch(choice)
+        {
+            case 1: 
+                trainerStats();
+                break;
+            case 2: 
+                Backpack.checkBackpack();
+                break;
+            case 3: 
+                System.out.println("TBI");
+                //Backpack.checkMap();
+                break;
+            case 4: 
+                System.out.println("TBI");
+                //Pokemon.SaveGame();
+                break;
+            case 5: 
+                System.exit(0);
+                break;
+            default: 
+        }
+    }
+}
